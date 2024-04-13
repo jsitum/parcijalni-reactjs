@@ -1,7 +1,6 @@
 .wrapper {
     background-color: #385170;
     color: #ececec;
-    height: 100vh;
     display: flex;
     flex-direction: column;
     gap: 20px;

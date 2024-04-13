@@ -35,6 +35,14 @@ function FetchGitUser() {
     event.preventDefault();
     fetchUserAndReposData(searchGit);
   };
+
+  const handleReset = () => {
+    setSearchGit('');
+    setUserData(null);
+    setReposData([]);
+    setError(null);
+    localStorage.removeItem('userData');
+  };
   
   const fetchUserAndReposData = (searchGit) => {
     const userApiUrl = `https://api.github.com/users/${searchGit}`;
@@ -75,14 +83,14 @@ function FetchGitUser() {
 
   return (
     <div className='container'>
-      <h2>GitHub User Search Tool</h2>
+      <header><h1>GitHub Search Tool</h1></header>
       <SearchForm 
         onSubmit={handleSubmit}
         value={searchGit}
         onChange={handleInputChange}
       />
       {error && <div>{error}</div>}
-      {userData && <Results userData={userData} reposData={reposData} />}
+      {userData && <Results userData={userData} reposData={reposData} onReset={handleReset}/>}
     </div>
   );
 }
