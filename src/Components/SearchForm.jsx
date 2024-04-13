@@ -1,15 +1,17 @@
 import React from 'react';
+import './SearchForm.css';
 
 function SearchForm({ onSubmit, value, onChange }) {
   return (
     <form onSubmit={onSubmit}>
-      <input
+      <label htmlFor="">GitHub username:</label>
+      <input className='input'
         type="text"
         value={value}
         onChange={onChange}
-        placeholder="Enter GitHub username"
+        placeholder="e.g. mmataja"
       />
-      <button type="submit">Search</button>
+      <button className='btn' type="submit">Search</button>
     </form>
   );
 }

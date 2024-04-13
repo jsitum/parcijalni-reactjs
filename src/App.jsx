@@ -1,8 +1,8 @@
 import React from 'react'
 import './App.css'
 import FetchGitUser from './Components/FetchGitUser'
-import 'bootstrap/dist/css/bootstrap.min.css';
-
+/* import 'bootstrap/dist/css/bootstrap.min.css';
+ */
 
 const App = () => {
   return (

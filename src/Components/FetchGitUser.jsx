@@ -1,13 +1,32 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import SearchForm from './SearchForm';
-import Results from './Results'; 
+import Results from './Results';
+import './FetchGitUser.css' 
 
 function FetchGitUser() {
   const [searchGit, setSearchGit] = useState('');
   const [userData, setUserData] = useState(null);
   const [reposData, setReposData] = useState([]);
   const [error, setError] = useState(null);
-  
+
+  useEffect(() => {
+    const storedSearch = localStorage.getItem('searchGit');
+    if (storedSearch) {
+      setSearchGit(storedSearch);
+      fetchUserAndReposData(storedSearch);
+    }
+  }, []);
+
+  useEffect(() => {
+    localStorage.setItem('searchGit', searchGit);
+  }, [searchGit]);
+
+  useEffect(() => {
+    if (userData) {
+      localStorage.setItem('userData', JSON.stringify(userData));
+    }
+  }, [userData]);
+
   const handleInputChange = (event) => {
     setSearchGit(event.target.value);
   };
@@ -37,7 +56,6 @@ function FetchGitUser() {
         setUserData(null);
       });
 
-
     fetch(reposApiUrl)
       .then(response => {
         if (!response.ok) {
@@ -56,7 +74,8 @@ function FetchGitUser() {
   };
 
   return (
-    <div>
+    <div className='container'>
+      <h2>GitHub User Search Tool</h2>
       <SearchForm 
         onSubmit={handleSubmit}
         value={searchGit}

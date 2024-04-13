@@ -1,0 +1,17 @@
+form {
+    border: solid grey 1px;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-width: 400px;
+    padding: 10px;
+    gap: 5px;
+}
+
+.input {
+    height: 30px;
+}
+.btn {
+    height: 30px;
+}
