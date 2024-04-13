@@ -21,7 +21,6 @@ function FetchGitUser() {
     const userApiUrl = `https://api.github.com/users/${searchGit}`;
     const reposApiUrl = `https://api.github.com/users/${searchGit}/repos`;
     
-    // Fetch user data
     fetch(userApiUrl)
       .then(response => {
         if (!response.ok) {
@@ -31,14 +30,14 @@ function FetchGitUser() {
       })
       .then(data => {
         setUserData(data);
-        setError(null); // Clear any previous errors
+        setError(null);
       })
       .catch(error => {
         setError(error.message);
-        setUserData(null); // Clear user data if an error occurs
+        setUserData(null);
       });
 
-    // Fetch repositories data
+
     fetch(reposApiUrl)
       .then(response => {
         if (!response.ok) {
@@ -48,11 +47,11 @@ function FetchGitUser() {
       })
       .then(data => {
         setReposData(data);
-        setError(null); // Clear any previous errors
+        setError(null);
       })
       .catch(error => {
         setError(error.message);
-        setReposData([]); // Clear repositories data if an error occurs
+        setReposData([]);
       });
   };
 
