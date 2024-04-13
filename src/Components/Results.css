@@ -1,16 +1,22 @@
 .result-wrapper {
+    display: flex;
+    flex-direction: column;
     background-color: #ececec;
     border: solid grey 1px;
-    border-radius: 10px;
-    width: 100%;
-    gap: 5px;
+    min-width: 800px;
+    gap: 10px;
+    padding-bottom: 5px;
+    margin: 0;
 }
 
 .info-container {
     color: black;
     display: flex;
-    justify-content: space-around;
+    justify-content: flex-start;
+    gap: 10px;
+    align-items: flex-start;
     text-align: left;
+    border-bottom: solid grey 3px;
 }
 
 h2 {
@@ -19,8 +25,10 @@ h2 {
 
 img {
     float: left;
-    width: 100px;
-    height: 100px;
+    width: 200px;
+    height: 200px;
+    padding: 10px;
+    border-right: solid grey 1px;
 }
 
 .repo-container {
@@ -38,8 +46,14 @@ ul {
 }
 
 li {
-    border-bottom: solid black 1px;
-    border-radius: 10px;
     padding: 5px;
-    
+    border-bottom: solid grey 1px;
 }
+
+a:hover, a:active {
+    background-color: red;
+  }
+
+  .result-wrapper > btn {
+    width: 100px;
+  }

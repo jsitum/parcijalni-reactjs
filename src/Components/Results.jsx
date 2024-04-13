@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import './Results.css';
 
 class Results extends Component {
+  
   render() {
-    const { userData, reposData } = this.props;
+    const { userData, reposData, onReset } = this.props;
 
     return (
       <div className='result-wrapper'>
@@ -25,6 +26,9 @@ class Results extends Component {
               </li>
             ))}
           </ul>
+        </div>
+        <div className='btn'>
+        <button onClick={onReset}>Reset</button>
         </div>
       </div>
     );
