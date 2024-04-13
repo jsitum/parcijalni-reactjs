@@ -6,6 +6,7 @@ function FetchGitUser() {
   const [searchGit, setSearchGit] = useState('');
   const [userData, setUserData] = useState(null);
   const [reposData, setReposData] = useState([]);
+  const [error, setError] = useState(null);
   
   const handleInputChange = (event) => {
     setSearchGit(event.target.value);
@@ -20,16 +21,38 @@ function FetchGitUser() {
     const userApiUrl = `https://api.github.com/users/${searchGit}`;
     const reposApiUrl = `https://api.github.com/users/${searchGit}/repos`;
     
+    // Fetch user data
     fetch(userApiUrl)
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('User not found');
+        }
+        return response.json();
+      })
       .then(data => {
         setUserData(data);
+        setError(null); // Clear any previous errors
+      })
+      .catch(error => {
+        setError(error.message);
+        setUserData(null); // Clear user data if an error occurs
       });
 
+    // Fetch repositories data
     fetch(reposApiUrl)
-      .then(response => response.json())
+      .then(response => {
+        if (!response.ok) {
+          throw new Error('Error fetching repositories');
+        }
+        return response.json();
+      })
       .then(data => {
         setReposData(data);
+        setError(null); // Clear any previous errors
+      })
+      .catch(error => {
+        setError(error.message);
+        setReposData([]); // Clear repositories data if an error occurs
       });
   };
 
@@ -40,6 +63,7 @@ function FetchGitUser() {
         value={searchGit}
         onChange={handleInputChange}
       />
+      {error && <div>{error}</div>}
       {userData && <Results userData={userData} reposData={reposData} />}
     </div>
   );
