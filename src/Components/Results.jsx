@@ -27,8 +27,8 @@ class Results extends Component {
             ))}
           </ul>
         </div>
-        <div className='btn'>
-        <button onClick={onReset}>Reset</button>
+        <div>
+        <button className='button' onClick={onReset}>Reset</button>
         </div>
       </div>
     );
