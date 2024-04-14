@@ -13,5 +13,12 @@ form {
     height: 30px;
 }
 .btn {
-    height: 30px;
+    background-color: #22802e;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
 }

@@ -19,6 +19,17 @@
     border-bottom: solid grey 3px;
 }
 
+.button {
+    background-color: #aa0404;
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    cursor: pointer;
+  }
+
 h2 {
     margin: 0px;
     padding: 10px;
